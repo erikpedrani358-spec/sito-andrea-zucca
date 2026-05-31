@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/*  BASE / RESET                                                        */
+/* ------------------------------------------------------------------ */
+:root {
+  --bg: #050505;
+  --fg: #c9c9c9;
+  --accent: #e10600; /* default accent; per-route themes override this */
+  --cursor: #e10600;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Hide the native cursor on devices that support a real pointer; the
+   custom cursor takes over. Touch devices keep their default behaviour. */
+@media (hover: hover) and (pointer: fine) {
+  .cursor-none * {
+    cursor: none !important;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Custom thin scrollbar to match the brutalist mood */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c1c1c;
+  border: 2px solid #000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ------------------------------------------------------------------ */
+/*  TYPOGRAPHY HELPERS                                                  */
+/* ------------------------------------------------------------------ */
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
+/* Editorial oversized display tracking */
+.display-tight {
+  letter-spacing: -0.02em;
+  line-height: 0.86;
+}
+
+/* ------------------------------------------------------------------ */
+/*  TEXTURE / GRAIN / NOISE                                             */
+/* ------------------------------------------------------------------ */
+.noise-overlay {
+  position: fixed;
+  inset: -200%;
+  width: 500%;
+  height: 500%;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scanline vignette for project ambiance */
+.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  DISTRESSED TITLE (barbed-wire / torn edge effect)                  */
+/*  Applied through an inline SVG turbulence displacement filter        */
+/* ------------------------------------------------------------------ */
+.distress {
+  filter: url(#az-distress);
+}
+.distress-soft {
+  filter: url(#az-distress-soft);
+}
+
+/* Metallic silver text used in the distressed runway titles */
+.text-metal {
+  background: linear-gradient(
+    180deg,
+    #fafafa 0%,
+    #d6d6d6 38%,
+    #8f8f8f 55%,
+    #efefef 72%,
+    #6f6f6f 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-blood {
+  background: linear-gradient(180deg, #ff2d22 0%, #c1121f 55%, #7a0a12 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ------------------------------------------------------------------ */
+/*  UTILITIES                                                           */
+/* ------------------------------------------------------------------ */
+.mask-line {
+  /* used to wrap a line of text so children can translateY reveal */
+  overflow: hidden;
+  display: block;
+}
+
+.will-reveal {
+  will-change: transform, opacity;
+}
+
+/* Thin animated underline for links */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Animated reddish bloom used between contact and footer */
+.contact-red-glow {
+  width: min(1200px, 88vw);
+  height: 360px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(138, 8, 14, 0.42) 0%,
+    rgba(98, 6, 11, 0.31) 30%,
+    rgba(48, 3, 6, 0.2) 50%,
+    rgba(5, 5, 5, 0) 72%
+  );
+  filter: blur(42px);
+  transform-origin: center;
+}
+
+.footer-red-origin {
+  width: min(1520px, 96vw);
+  height: 600px;
+  animation: footerGlowDrift 9s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes footerGlowDrift {
+  0% {
+    transform: translate3d(-2%, -100%, 0) scale(0.98);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate3d(2%, -94%, 0) scale(1.07);
+    opacity: 0.92;
+  }
+  100% {
+    transform: translate3d(-2%, -100%, 0) scale(0.98);
+    opacity: 0.7;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
