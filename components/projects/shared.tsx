@@ -15,7 +15,7 @@ export function ProjectTopBar({ index, year }: { index: string; year: string }) 
     <div className="pointer-events-none fixed inset-x-0 top-16 z-[60] md:top-24">
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 md:px-10">
         <Link
-          href="/#work"
+          href="/"
           className="pointer-events-auto inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-brutal text-silver hover:text-[var(--accent)]"
           data-cursor="hover"
         >
