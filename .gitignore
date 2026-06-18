@@ -33,3 +33,5 @@ yarn-error.log*
 
 # diagnostic screenshots
 /scripts/*.png
+.vercel
+.env*

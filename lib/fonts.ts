@@ -7,25 +7,25 @@ import {
 } from "next/font/google";
 
 /**
- * Typographic system.
- * - Inter        → UI / navigation / body
- * - Cormorant    → elegant editorial serif (refined headings, Ear Cuff)
- * - Anton        → industrial condensed display (distressed titles base)
- * - Pinyon Script→ the "Andrea Zucca" cursive logotype
- * - Space Mono   → technical readouts (GPS coordinates, labels, indices)
+ * Typographic system — only critical faces are preloaded (Inter + Anton).
+ * Weights trimmed to what the site actually uses.
  */
 
 export const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 export const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400"],
   variable: "--font-cormorant",
   display: "swap",
+  preload: false,
+  adjustFontFallback: true,
 });
 
 export const anton = Anton({
@@ -33,6 +33,8 @@ export const anton = Anton({
   weight: "400",
   variable: "--font-anton",
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 export const script = Pinyon_Script({
@@ -40,13 +42,16 @@ export const script = Pinyon_Script({
   weight: "400",
   variable: "--font-script",
   display: "swap",
+  preload: false,
 });
 
 export const mono = Space_Mono({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: "400",
   variable: "--font-mono",
   display: "swap",
+  preload: false,
+  adjustFontFallback: true,
 });
 
 export const fontVariables = [

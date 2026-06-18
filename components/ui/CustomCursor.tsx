@@ -78,20 +78,8 @@ export default function CustomCursor() {
       />
       <div
         ref={ringRef}
-        className="cursor-ring fixed left-0 top-0 h-9 w-9 rounded-full border border-white/80"
+        className="cursor-ring fixed left-0 top-0 h-9 w-9 rounded-full border border-white/80 transition-[width,height,background-color] duration-300 ease-out [&.cursor-grow]:h-16 [&.cursor-grow]:w-16 [&.cursor-grow]:bg-white/10"
       />
-      <style jsx>{`
-        .cursor-ring {
-          transition: width 0.32s cubic-bezier(0.7, 0, 0.2, 1),
-            height 0.32s cubic-bezier(0.7, 0, 0.2, 1),
-            background-color 0.32s ease;
-        }
-        :global(.cursor-ring.cursor-grow) {
-          width: 4rem;
-          height: 4rem;
-          background-color: rgba(255, 255, 255, 0.12);
-        }
-      `}</style>
     </div>
   );
 }

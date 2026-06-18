@@ -32,7 +32,7 @@ export default function FeaturedProjects() {
   return (
     <section
       id="work"
-      className="relative bg-ink py-24 md:py-36"
+      className="content-auto relative bg-ink py-24 md:py-36"
     >
       <div className="mx-auto max-w-[1600px] px-5 md:px-10">
         {/* Section header */}
@@ -106,25 +106,37 @@ export default function FeaturedProjects() {
                     scale: active === i ? 1 : 0.85,
                   }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative h-72 w-56 overflow-hidden"
+                  className="relative rounded-none border border-white/25 bg-ink p-2.5 shadow-[0_24px_64px_-8px_rgba(0,0,0,0.75)] outline outline-1 outline-white/10 outline-offset-[5px]"
                 >
-                  <Image
-                    src={
-                      p.slug === "senza-limiti"
-                        ? "/assets/projects/senza-limiti/03.jpg"
-                        : p.slug === "anatomia-della-gabbia"
-                        ? "/assets/projects/anatomia-della-gabbia/09.jpg"
-                        : p.cover
-                    }
-                    alt={p.title}
-                    fill
-                    sizes="224px"
-                    className="object-cover"
-                  />
                   <div
-                    className="absolute inset-0 mix-blend-color"
-                    style={{ background: p.accent, opacity: 0.18 }}
+                    className="absolute inset-x-2.5 top-2.5 h-px"
+                    style={{ background: p.accent, opacity: 0.85 }}
                   />
+                  <div className="relative h-72 w-56 overflow-hidden rounded-none border border-white/15">
+                    <Image
+                      src={
+                        p.slug === "senza-limiti"
+                          ? "/assets/projects/senza-limiti/03.jpg"
+                          : p.slug === "anatomia-della-gabbia"
+                          ? "/assets/projects/anatomia-della-gabbia/09.jpg"
+                          : p.cover
+                      }
+                      alt={p.title}
+                      fill
+                      loading="lazy"
+                      sizes="224px"
+                      quality={70}
+                      className="rounded-none object-cover"
+                    />
+                    <div
+                      className="absolute inset-0 mix-blend-color"
+                      style={{ background: p.accent, opacity: 0.18 }}
+                    />
+                  </div>
+                  <div className="mt-2 flex items-center justify-between border-t border-white/10 pt-2 font-mono text-[9px] uppercase tracking-brutal text-silver-dim">
+                    <span>{p.index}</span>
+                    <span>2025</span>
+                  </div>
                 </motion.div>
               </div>
             ))}

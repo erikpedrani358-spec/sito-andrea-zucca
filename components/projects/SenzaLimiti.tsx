@@ -29,6 +29,8 @@ export default function SenzaLimiti() {
   });
   const titleY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
   const stripY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const teaserOpacity = useTransform(scrollYProgress, [0, 0.2, 0.35], [1, 0.45, 0]);
+  const teaserY = useTransform(scrollYProgress, [0, 0.35], ["0%", "-18%"]);
 
   return (
     <main
@@ -92,9 +94,12 @@ export default function SenzaLimiti() {
 
           <div className="mt-10 flex flex-wrap items-end justify-between gap-6">
             <CoordinatesTag project={project} />
-            <p className="max-w-sm font-sans text-sm text-silver md:text-base">
+            <motion.p
+              style={{ opacity: teaserOpacity, y: teaserY }}
+              className="max-w-sm font-sans text-sm text-silver will-reveal md:text-base"
+            >
               {project.teaser}
-            </p>
+            </motion.p>
           </div>
         </motion.div>
 

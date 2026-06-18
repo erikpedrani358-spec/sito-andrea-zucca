@@ -13,6 +13,38 @@ import {
 
 const project = getProject("anatomia-della-gabbia")!;
 
+function GalleryFigure({
+  img,
+  index,
+  sizes = "(max-width: 768px) 100vw, 33vw",
+}: {
+  img: (typeof project.gallery)[number];
+  index: number;
+  sizes?: string;
+}) {
+  return (
+    <motion.figure
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-8%" }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative overflow-hidden border border-white/5"
+    >
+      <Image
+        src={img.src}
+        alt={img.alt}
+        width={800}
+        height={1100}
+        sizes={sizes}
+        className="h-auto w-full object-cover grayscale transition-all duration-[1.4s] ease-out group-hover:grayscale-0 group-hover:scale-[1.03]"
+      />
+      <figcaption className="absolute bottom-0 left-0 w-full translate-y-full bg-gradient-to-t from-ink to-transparent p-4 font-mono text-[10px] uppercase tracking-brutal text-silver transition-transform duration-500 group-hover:translate-y-0">
+        Fig. {String(index + 1).padStart(2, "0")}
+      </figcaption>
+    </motion.figure>
+  );
+}
+
 /** Decorative vertical "cage bars" that retract to reveal content. */
 function CageBars({ count = 9 }: { count?: number }) {
   return (
@@ -145,26 +177,9 @@ export default function AnatomiaGabbia() {
       <section className="relative py-12 md:py-20">
         <div className="mx-auto max-w-[1600px] columns-1 gap-4 px-5 sm:columns-2 md:columns-3 md:px-10">
           {project.gallery.map((img, i) => (
-            <motion.figure
-              key={`${img.src}-${i}`}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-8%" }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative mb-4 break-inside-avoid overflow-hidden border border-white/5"
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                width={800}
-                height={1100}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="h-auto w-full object-cover grayscale transition-all duration-[1.4s] ease-out group-hover:grayscale-0 group-hover:scale-[1.03]"
-              />
-              <figcaption className="absolute bottom-0 left-0 w-full translate-y-full bg-gradient-to-t from-ink to-transparent p-4 font-mono text-[10px] uppercase tracking-brutal text-silver transition-transform duration-500 group-hover:translate-y-0">
-                Fig. {String(i + 1).padStart(2, "0")}
-              </figcaption>
-            </motion.figure>
+            <div key={`${img.src}-${i}`} className="mb-4 break-inside-avoid">
+              <GalleryFigure img={img} index={i} />
+            </div>
           ))}
         </div>
       </section>

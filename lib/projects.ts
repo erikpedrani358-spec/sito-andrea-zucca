@@ -51,7 +51,7 @@ export const projects: Project[] = [
     index: "01",
     title: "Senza Limiti",
     subtitle: "Fashion Show 2024",
-    year: "2024",
+    year: "2025",
     teaser: "The skeleton turned inside out — exposure, restraint, presence.",
     rationale: [
       "Inspired by anatomical structures, the look reinterprets the skeleton as an external surface.",
@@ -69,8 +69,6 @@ export const projects: Project[] = [
       { src: "/assets/projects/senza-limiti/03.jpg", alt: "Senza Limiti runway look", span: "tall" },
       { src: "/assets/projects/senza-limiti/07.jpg", alt: "Senza Limiti — runway walk with audience applause", span: "wide" },
       { src: "/assets/projects/senza-limiti/05.jpg", alt: "Senza Limiti — construction detail", span: "square" },
-      { src: "/assets/projects/senza-limiti/06.jpg", alt: "Senza Limiti — full look studio", span: "tall" },
-      { src: "/assets/projects/senza-limiti/03.jpg", alt: "Senza Limiti — red and black skeleton detail", span: "wide" },
     ],
   },
   {

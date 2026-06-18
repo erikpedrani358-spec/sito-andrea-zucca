@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -42,6 +42,13 @@ function MaskedWord({ text }: { text: string }) {
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [finePointer, setFinePointer] = useState(false);
+
+  useEffect(() => {
+    setFinePointer(
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    );
+  }, []);
 
   // Scroll-linked parallax: background drifts + scales, content fades up.
   const { scrollYProgress } = useScroll({
@@ -58,8 +65,6 @@ export default function Hero() {
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 60, damping: 18 });
   const sy = useSpring(my, { stiffness: 60, damping: 18 });
-  const bgPX = useTransform(sx, [-0.5, 0.5], ["12px", "-12px"]);
-  const bgPY = useTransform(sy, [-0.5, 0.5], ["12px", "-12px"]);
   const titlePX = useTransform(sx, [-0.5, 0.5], ["-18px", "18px"]);
   const titlePY = useTransform(sy, [-0.5, 0.5], ["-10px", "10px"]);
 
@@ -72,27 +77,39 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      onMouseMove={handleMouse}
+      onMouseMove={finePointer ? handleMouse : undefined}
       className="vignette relative min-h-[100svh] w-full overflow-hidden bg-ink"
     >
       {/* ---------- Background image layer ---------- */}
       <motion.div
-        style={{ y: bgY, scale: bgScale, x: bgPX, translateY: bgPY }}
+        style={{ y: bgY, scale: bgScale }}
         className="absolute inset-0"
       >
-        <motion.div style={{ x: bgPX, y: bgPY }} className="absolute inset-0">
+        <div className="absolute inset-0 translate-x-[20%]">
           <Image
             src="/assets/stylist/01.jpg"
             alt="Andrea Zucca portrait in black leather"
             fill
             priority
-            sizes="100vw"
-            className="object-cover object-top opacity-70 [filter:grayscale(0.3)_contrast(1.15)_brightness(0.8)]"
+            fetchPriority="high"
+            quality={75}
+            sizes="(max-width: 768px) 85vw, 42vw"
+            className="object-cover object-left-top opacity-65 [filter:grayscale(0.3)_contrast(1.15)_brightness(0.68)]"
           />
-        </motion.div>
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-black/15" />
+        </div>
       </motion.div>
 
-      {/* Color grading: black base + a bleed of blood red from the edges */}
+      {/* Soft blend between left black gutter and image edge */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[78%] md:w-[62%]"
+        style={{
+          background:
+            "linear-gradient(to right, #050505 0%, #050505 14%, rgba(5,5,5,0.97) 26%, rgba(5,5,5,0.88) 38%, rgba(5,5,5,0.72) 50%, rgba(5,5,5,0.52) 62%, rgba(5,5,5,0.32) 74%, rgba(5,5,5,0.14) 86%, transparent 100%)",
+        }}
+      />
+
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/20 to-ink" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_120%,rgba(225,6,0,0.22),transparent_55%)]" />
 
@@ -101,12 +118,12 @@ export default function Hero() {
         style={{ y: contentY, opacity: fade }}
         className="relative z-10 mx-auto flex h-full max-w-[1600px] flex-col justify-between px-5 pb-8 pt-24 md:px-10 md:pb-12"
       >
-        {/* Top meta row */}
+        {/* Top meta row — absolute so title/bio stay in place */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 1 }}
-          className="flex items-start justify-between font-mono text-[10px] uppercase tracking-brutal text-silver-dim md:text-[11px]"
+          className="absolute left-5 right-5 top-14 flex items-start justify-between font-mono text-[10px] uppercase tracking-brutal text-silver-dim md:left-10 md:right-10 md:top-[4.75rem] md:text-[11px]"
         >
           <span>
             Fashion Designer
@@ -119,10 +136,14 @@ export default function Hero() {
             9.1900° E
           </span>
         </motion.div>
+        <div aria-hidden className="h-[30px] shrink-0" />
 
         {/* Headline */}
         <motion.div
-          style={{ x: titlePX, y: titlePY }}
+          style={{
+            x: finePointer ? titlePX : 0,
+            y: finePointer ? titlePY : 0,
+          }}
           className="flex flex-col"
         >
           <motion.h1
@@ -138,6 +159,10 @@ export default function Hero() {
               <MaskedWord text="Zucca" />
             </span>
           </motion.h1>
+          <p className="sr-only">
+            Andrea Zucca — fashion designer portfolio, Milano. Senza Limiti,
+            Anatomia della Gabbia, Ear Cuff.
+          </p>
 
           {/* Accent line + vertical biography column.
               Narrow max-width forces the long text to break onto more lines,
@@ -153,9 +178,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.9 }}
-              className="space-y-3 font-sans text-[13px] leading-relaxed text-silver md:text-sm"
+              className="relative space-y-4 border-l border-white/15 pl-4 font-sans text-[13px] leading-[1.65] text-silver md:pl-5 md:text-sm"
             >
-              <p>
+              <p className="text-silver-bright">
                 Andrea Zucca explores fashion through identity, structure and
                 tension.
               </p>

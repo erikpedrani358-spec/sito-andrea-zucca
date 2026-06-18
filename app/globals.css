@@ -224,7 +224,24 @@ main {
   }
 }
 
-/* Respect reduced motion */
+/* Respect reduced motion + save GPU on touch devices */
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .noise-overlay {
+    display: none;
+  }
+
+  .footer-red-origin {
+    animation: none;
+    will-change: auto;
+  }
+}
+
+/* Below-the-fold sections skip layout/paint until near viewport */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

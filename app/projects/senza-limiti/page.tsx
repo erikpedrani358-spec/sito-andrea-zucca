@@ -1,19 +1,24 @@
 import type { Metadata } from "next";
 import SenzaLimiti from "@/components/projects/SenzaLimiti";
-import { getProject } from "@/lib/projects";
+import JsonLd from "@/components/seo/JsonLd";
+import {
+  breadcrumbJsonLd,
+  projectCreativeWorkJsonLd,
+  projectMetadata,
+} from "@/lib/seo";
 
-const project = getProject("senza-limiti")!;
-
-export const metadata: Metadata = {
-  title: `${project.title} — ${project.subtitle}`,
-  description: project.teaser,
-  openGraph: {
-    title: `${project.title} — Andrea Zucca`,
-    description: project.teaser,
-    images: [{ url: project.cover }],
-  },
-};
+export const metadata: Metadata = projectMetadata("senza-limiti");
 
 export default function Page() {
-  return <SenzaLimiti />;
+  return (
+    <>
+      <JsonLd
+        data={[
+          projectCreativeWorkJsonLd("senza-limiti"),
+          breadcrumbJsonLd("senza-limiti"),
+        ]}
+      />
+      <SenzaLimiti />
+    </>
+  );
 }

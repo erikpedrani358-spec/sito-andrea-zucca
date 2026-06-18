@@ -156,22 +156,53 @@ export default function EarCuff() {
 
       {/* ===================== GALLERY ===================== */}
       <section className="relative z-10 py-12 md:py-20">
-        <div className="mx-auto grid max-w-[1600px] grid-cols-2 gap-3 px-5 md:grid-cols-4 md:gap-5 md:px-10">
-          {project.gallery.slice(1).map((img, i) => (
-            <div
-              key={`${img.src}-${i}`}
-              className={`group ${i % 3 === 0 ? "md:row-span-2" : ""}`}
-            >
+        <div className="mx-auto max-w-[1600px] px-5 md:px-10">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+            {project.gallery.slice(1, 5).map((img, i) => (
+              <div
+                key={`${img.src}-${i}`}
+                className={`group ${i % 3 === 0 ? "md:row-span-2" : ""}`}
+              >
+                <RevealImage
+                  src={img.src}
+                  alt={img.alt}
+                  className={`w-full ${
+                    i % 3 === 0 ? "aspect-[3/5]" : "aspect-[3/4]"
+                  }`}
+                  imgClassName="transition-transform duration-[1.4s] ease-out group-hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-3 grid grid-cols-2 gap-3 md:mt-5 md:grid-cols-4 md:gap-5">
+            <div className="group md:col-start-2">
               <RevealImage
-                src={img.src}
-                alt={img.alt}
-                className={`w-full ${
-                  i % 3 === 0 ? "aspect-[3/5]" : "aspect-[3/4]"
-                }`}
+                src="/assets/projects/ear-cuff/07.jpg"
+                alt="Ear Cuff — tin texture"
+                className="aspect-[3/4] w-full"
                 imgClassName="transition-transform duration-[1.4s] ease-out group-hover:scale-105"
               />
             </div>
-          ))}
+            <div className="group md:col-start-3">
+              <RevealImage
+                src="/assets/projects/ear-cuff/08.jpg"
+                alt="Ear Cuff — editorial"
+                className="aspect-[3/4] w-full"
+                imgClassName="transition-transform duration-[1.4s] ease-out group-hover:scale-105"
+              />
+            </div>
+            <div className="col-span-2 flex justify-center md:col-span-2 md:col-start-2">
+              <div className="group w-1/2">
+                <RevealImage
+                  src="/assets/projects/ear-cuff/09.jpg"
+                  alt="Ear Cuff — final object"
+                  className="aspect-[3/4] w-full"
+                  imgClassName="transition-transform duration-[1.4s] ease-out group-hover:scale-105"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
