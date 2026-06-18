@@ -22,7 +22,7 @@ export const SITE = {
   whatsapp: "https://wa.me/393516521573",
   location: "Milano, Italy",
   coordinates: { lat: 45.4642, lng: 9.19 },
-  defaultOgImage: "/assets/projects/senza-limiti/02.jpg",
+  defaultOgImage: "/assets/stylist/01.jpg",
   portraitImage: "/assets/stylist/01.jpg",
 } as const;
 
@@ -89,7 +89,7 @@ export function baseMetadata(): Metadata {
         {
           url: SITE.defaultOgImage,
           width: 1200,
-          height: 1600,
+          height: 630,
           alt: `${SITE.name} — fashion designer portfolio`,
         },
       ],
@@ -110,9 +110,6 @@ export function baseMetadata(): Metadata {
         "max-snippet": -1,
         "max-video-preview": -1,
       },
-    },
-    icons: {
-      icon: "/favicon.ico",
     },
     other: {
       "geo.region": "IT-MI",

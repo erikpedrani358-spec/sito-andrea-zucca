@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 /** easeOutExpo for a counter that decelerates into 100. */
@@ -29,12 +29,8 @@ export default function Preloader() {
   const [count, setCount] = useState(0);
   const [done, setDone] = useState(false);
   const [skip, setSkip] = useState(false);
-  const started = useRef(false);
 
   useEffect(() => {
-    if (started.current) return;
-    started.current = true;
-
     if (shouldSkipPreloader()) {
       setSkip(true);
       setDone(true);
@@ -44,9 +40,15 @@ export default function Preloader() {
     window.sessionStorage.setItem("az-preloaded", "1");
 
     let raf = 0;
+    let finished = false;
     const duration = 900;
     const start = performance.now();
-    const finish = () => setDone(true);
+
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      setDone(true);
+    };
 
     const step = (now: number) => {
       const t = Math.min(1, (now - start) / duration);
@@ -59,10 +61,10 @@ export default function Preloader() {
     };
     raf = requestAnimationFrame(step);
 
-    // Never block longer than 1.2s waiting for the exit animation.
     const maxTimer = window.setTimeout(finish, 1200);
     const onLoad = () => window.setTimeout(finish, 220);
-    window.addEventListener("load", onLoad, { once: true });
+    if (document.readyState === "complete") onLoad();
+    else window.addEventListener("load", onLoad, { once: true });
 
     return () => {
       cancelAnimationFrame(raf);
@@ -74,9 +76,10 @@ export default function Preloader() {
   if (skip) return null;
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {!done && (
         <motion.div
+          key="preloader"
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink"
           exit={{ y: "-100%" }}
           transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}
