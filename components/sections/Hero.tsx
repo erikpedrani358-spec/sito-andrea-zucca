@@ -56,7 +56,7 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
@@ -85,20 +85,16 @@ export default function Hero() {
         style={{ y: bgY, scale: bgScale }}
         className="absolute inset-0"
       >
-        {/*
-          Narrow right column (~46vw) so portrait aspect matches the frame
-          and object-cover does not crop/zoom as aggressively as full-viewport.
-        */}
-        <div className="absolute bottom-0 right-[-4%] top-[5%] w-[78vw] translate-y-[10%] sm:w-[68vw] md:right-0 md:top-[4%] md:w-[min(46vw,680px)] md:translate-y-[11%]">
+        <div className="absolute -left-[4%] -right-[10%] -top-[20%] bottom-10 translate-x-[14%] translate-y-[8%] md:-top-[16%] md:bottom-12 md:translate-x-[18%] md:translate-y-[10%]">
           <Image
             src="/assets/stylist/01.jpg"
             alt="Andrea Zucca portrait in black leather"
             fill
             priority
             fetchPriority="high"
-            quality={80}
-            sizes="(max-width: 768px) 78vw, 680px"
-            className="object-cover object-[50%_12%] opacity-65 [filter:grayscale(0.3)_contrast(1.15)_brightness(0.68)] md:object-[52%_10%]"
+            quality={75}
+            sizes="(max-width: 768px) 100vw, 55vw"
+            className="object-cover object-[40%_18%] opacity-65 [filter:grayscale(0.3)_contrast(1.15)_brightness(0.68)] md:object-[44%_15%]"
           />
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-black/15" />
         </div>
@@ -229,7 +225,7 @@ export default function Hero() {
       </motion.div>
 
       {/* ---------- Bottom marquee ticker ---------- */}
-      <div className="absolute bottom-0 left-0 z-10 hidden w-full overflow-hidden border-t border-white/5 py-2 md:block">
+      <div className="absolute bottom-0 left-0 z-10 hidden w-full overflow-hidden border-t border-white/5 py-2 md:block md:pb-3">
         <div className="flex w-max animate-marquee whitespace-nowrap font-mono text-[11px] uppercase tracking-brutal text-silver-dim">
           {Array.from({ length: 2 }).map((_, i) => (
             <span key={i} className="flex">
