@@ -55,8 +55,8 @@ export default function Hero() {
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.2]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
@@ -85,7 +85,7 @@ export default function Hero() {
         style={{ y: bgY, scale: bgScale }}
         className="absolute inset-0"
       >
-        <div className="absolute inset-0 translate-x-[20%]">
+        <div className="absolute -bottom-[8%] -left-[4%] -right-[10%] -top-[20%] translate-x-[14%] translate-y-[10%] md:-bottom-[10%] md:-top-[16%] md:translate-x-[18%] md:translate-y-[11%]">
           <Image
             src="/assets/stylist/01.jpg"
             alt="Andrea Zucca portrait in black leather"
@@ -93,8 +93,8 @@ export default function Hero() {
             priority
             fetchPriority="high"
             quality={75}
-            sizes="(max-width: 768px) 85vw, 42vw"
-            className="object-cover object-left-top opacity-65 [filter:grayscale(0.3)_contrast(1.15)_brightness(0.68)]"
+            sizes="(max-width: 768px) 100vw, 55vw"
+            className="object-cover object-[40%_top] opacity-65 [filter:grayscale(0.3)_contrast(1.15)_brightness(0.68)] md:object-[44%_top]"
           />
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-black/15" />
         </div>
