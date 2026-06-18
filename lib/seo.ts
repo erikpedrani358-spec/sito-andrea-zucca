@@ -4,7 +4,7 @@ import { getProject, projects, type ProjectSlug } from "@/lib/projects";
 /** Canonical site URL — set NEXT_PUBLIC_SITE_URL in production (e.g. Vercel). */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "https://andreazucca.com";
+  "https://andreazucca.eu";
 
 export const SITE = {
   name: "Andrea Zucca",
