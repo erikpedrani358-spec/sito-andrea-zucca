@@ -158,7 +158,7 @@ export default function ChowaArmonia() {
       {/* ===================== HERO — harmony, stitched ===================== */}
       <section
         ref={heroRef}
-        className="relative grid min-h-[100svh] grid-cols-1 items-center gap-10 overflow-hidden pt-28 md:grid-cols-2 md:pt-0"
+        className="relative grid min-h-[100svh] grid-cols-1 items-center gap-10 overflow-hidden pt-28 md:grid-cols-2 md:pt-24"
       >
         {/* 和 watermark — harmony, behind everything */}
         <span
@@ -223,6 +223,28 @@ export default function ChowaArmonia() {
           <div className="mt-10">
             <CoordinatesTag project={project} />
           </div>
+
+          {/* Official show poster — desktop only (mobile shows it as hero image) */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 1 }}
+            className="mt-8 hidden md:block"
+          >
+            <div className="relative aspect-[1024/535] w-full max-w-[420px] border border-white/15">
+              <Image
+                src="/assets/projects/chowa-armonia/24.jpg"
+                alt="Chowa: Armonia — official show poster, 25 September 2026, Eleven Factory Milano"
+                fill
+                quality={85}
+                sizes="(max-width: 768px) 100vw, 30vw"
+                className="object-cover"
+              />
+            </div>
+            <span className="mt-2 block font-mono text-[10px] uppercase tracking-brutal text-silver-dim">
+              Official poster — <span className="text-thread">25.09.2026 · Eleven Factory</span>
+            </span>
+          </motion.div>
         </div>
 
         {/* High-key profile — the only bright element on ink */}
@@ -234,6 +256,17 @@ export default function ChowaArmonia() {
               transition={{ duration: 1.4, ease: [0.7, 0, 0.2, 1] }}
               className="relative h-full w-full"
             >
+              {/* Mobile — official show poster, shown in full */}
+              <Image
+                src="/assets/projects/chowa-armonia/24.jpg"
+                alt="Chowa: Armonia — official show poster, 25 September 2026, Eleven Factory Milano"
+                fill
+                priority
+                quality={88}
+                sizes="100vw"
+                className="object-contain md:hidden"
+              />
+              {/* Desktop — the look on the runway */}
               <Image
                 src="/assets/projects/chowa-armonia/18.jpg"
                 alt="Chowa: Armonia — Equilibrium, full look walking the runway"
@@ -241,7 +274,7 @@ export default function ChowaArmonia() {
                 priority
                 quality={88}
                 sizes="50vw"
-                className="object-cover"
+                className="hidden object-cover md:block"
               />
             </motion.div>
           </motion.div>
