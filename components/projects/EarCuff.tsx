@@ -58,6 +58,7 @@ export default function EarCuff() {
                 alt="Ear Cuff — close portrait with filigree earring"
                 fill
                 priority
+                quality={88}
                 sizes="50vw"
                 className="object-cover"
               />

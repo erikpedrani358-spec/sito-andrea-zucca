@@ -175,7 +175,7 @@ export const projects: Project[] = [
     rationale: [
       "Chowa — harmony. A special project dedicated to Giuliano Fujiwara, reinterpreting the brand's identity and creative heritage through the students' contemporary perspective.",
       "The whole creative process unfolds from garment design to styling and image development, balancing archive research with experimentation.",
-      "Three looks — Sashiko De-Construction, Equilibrium, Memory Gesture — move between hand-stitched memory, suspended balance and the gesture of dressing.",
+      "Three looks — Sashiko De-Construction, Memory Gesture, Equilibrium — move between hand-stitched memory, suspended balance and the gesture of dressing.",
     ],
     materials: [
       "Red running-stitch sashiko",

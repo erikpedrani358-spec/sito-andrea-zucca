@@ -23,13 +23,13 @@ const LOOKS = [
   },
   {
     n: "02",
-    name: "Equilibrium",
-    note: "Full and empty volumes meet. The principle of the kimono converses with Western tailoring, creating a silhouette suspended between fluidity and structure. Equilibrium is not born of symmetry, but of the tension between different elements.",
+    name: "Memory / Gesture",
+    note: "A white shirt like a blank page. The handwritten script becomes traces of thought — fragments of memory, signs of the creative process. The red of the archive meets the gesture of Ikebana: body, flower and space in equilibrium.",
   },
   {
     n: "03",
-    name: "Memory Gesture",
-    note: "The gesture of memory — a knotted tunic and a nest of cords carried through the industrial hall.",
+    name: "Equilibrium",
+    note: "Full and empty volumes meet. The principle of the kimono converses with Western tailoring, creating a silhouette suspended between fluidity and structure. Equilibrium is not born of symmetry, but of the tension between different elements.",
   },
 ] as const;
 
@@ -239,6 +239,7 @@ export default function ChowaArmonia() {
                 alt="Chowa: Armonia — Equilibrium, full look walking the runway"
                 fill
                 priority
+                quality={88}
                 sizes="50vw"
                 className="object-cover"
               />
@@ -248,7 +249,7 @@ export default function ChowaArmonia() {
             aria-hidden
             className="absolute bottom-6 left-6 z-10 font-mono text-[10px] uppercase tracking-brutal text-silver-dim"
           >
-            Look 02 — <span className="text-thread">Equilibrium</span>
+            Look 02 — <span className="text-thread">Memory / Gesture</span>
           </span>
         </div>
       </section>
@@ -359,7 +360,7 @@ export default function ChowaArmonia() {
                 {LOOKS[1].note}
               </p>
               <span className="mt-3 block font-mono text-[10px] uppercase tracking-brutal text-silver-dim">
-                Model — <span className="text-thread">Andrea Milani</span>
+                Model — <span className="text-thread">Michael Sillence</span>
               </span>
             </div>
           </div>
@@ -398,6 +399,18 @@ export default function ChowaArmonia() {
               </div>
             ))}
           </div>
+
+          {/* Closing centerpiece — the whoopsee press feature, inserted as provided */}
+          <div className="mx-auto mt-5 w-full md:mt-10 md:w-2/5">
+            <RevealImage
+              src="/assets/projects/chowa-armonia/08.jpg"
+              alt="Chowa: Armonia — whoopsee press feature with Look 02 on the runway"
+              className="aspect-[1179/2076] w-full border border-white/10"
+            />
+            <span className="mt-2 block text-center font-mono text-[10px] uppercase tracking-brutal text-silver-dim">
+              02.23 — <span className="text-thread">press · whoopsee</span>
+            </span>
+          </div>
         </div>
       </section>
 
@@ -425,6 +438,9 @@ export default function ChowaArmonia() {
             <p className="font-sans text-base leading-relaxed text-silver md:text-lg">
               {LOOKS[2].note}
             </p>
+            <span className="mt-4 block font-mono text-[10px] uppercase tracking-brutal text-silver-dim">
+              Model — <span className="text-thread">Andrea Milani</span>
+            </span>
             <div className="mt-8">
               <SashikoStitch className="w-40" delay={0.2} />
             </div>

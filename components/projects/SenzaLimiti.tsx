@@ -51,6 +51,7 @@ export default function SenzaLimiti() {
             alt=""
             fill
             priority
+            quality={88}
             sizes="100vw"
             className="object-cover [filter:contrast(1.15)_brightness(0.78)]"
           />

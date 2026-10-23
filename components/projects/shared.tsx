@@ -124,6 +124,7 @@ export function RevealImage({
         alt={alt}
         fill
         sizes="(max-width: 768px) 100vw, 50vw"
+        quality={85}
         priority={priority}
         className={`object-cover ${imgClassName ?? ""}`}
       />

@@ -101,6 +101,7 @@ export default function AnatomiaGabbia() {
             alt=""
             fill
             priority
+            quality={88}
             sizes="100vw"
             className="object-cover grayscale [filter:grayscale(1)_contrast(1.25)_brightness(0.55)]"
           />

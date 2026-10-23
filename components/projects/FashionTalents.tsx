@@ -75,6 +75,7 @@ export default function FashionTalents() {
             alt=""
             fill
             priority
+            quality={88}
             sizes="100vw"
             className="object-cover [filter:contrast(1.12)_brightness(0.5)_saturate(0.72)]"
           />
