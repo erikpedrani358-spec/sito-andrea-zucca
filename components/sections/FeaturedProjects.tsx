@@ -7,7 +7,7 @@ import { motion, useMotionValue, useSpring } from "motion/react";
 import { projects } from "@/lib/projects";
 
 /**
- * Editorial index of the three collections.
+ * Editorial index of the collections.
  * Hovering a row reveals a floating cover preview that trails the cursor
  * (a hallmark of high-fashion portfolios) and tints the row in the
  * project's own accent colour.
@@ -41,7 +41,7 @@ export default function FeaturedProjects() {
             <span className="font-script not-italic">Selected</span> Works
           </h2>
           <span className="font-mono text-[11px] uppercase tracking-brutal text-silver-dim">
-            (03) — 2024 / 2025
+            (05) — 2024 / 2026
           </span>
         </div>
 
@@ -135,7 +135,7 @@ export default function FeaturedProjects() {
                   </div>
                   <div className="mt-2 flex items-center justify-between border-t border-white/10 pt-2 font-mono text-[9px] uppercase tracking-brutal text-silver-dim">
                     <span>{p.index}</span>
-                    <span>2025</span>
+                    <span>{p.year}</span>
                   </div>
                 </motion.div>
               </div>

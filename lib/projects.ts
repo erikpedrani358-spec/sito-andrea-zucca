@@ -10,7 +10,9 @@
 export type ProjectSlug =
   | "senza-limiti"
   | "anatomia-della-gabbia"
-  | "ear-cuff";
+  | "ear-cuff"
+  | "fashion-talents"
+  | "chowa-armonia";
 
 export interface ProjectImage {
   src: string;
@@ -129,6 +131,69 @@ export const projects: Project[] = [
       { src: "/assets/projects/ear-cuff/07.jpg", alt: "Ear Cuff — tin texture", span: "square" },
       { src: "/assets/projects/ear-cuff/08.jpg", alt: "Ear Cuff — editorial", span: "tall" },
       { src: "/assets/projects/ear-cuff/09.jpg", alt: "Ear Cuff — final object", span: "wide" },
+    ],
+  },
+  {
+    slug: "fashion-talents",
+    index: "04",
+    title: "Fashion & Talents",
+    subtitle: "Giuliano Fujiwara × Brand Project",
+    year: "2026",
+    teaser:
+      "Not the full collection. Just a preview — seen on the runway in Piazza di Spagna.",
+    rationale: [
+      "A first look, a first fragment of the Brand Project developed with Accademia del Lusso: a single look designed to be seen in motion, under the lights, on the runway.",
+      "Crisp shirting, glossed red nappa and long-fringe leather staged against the nightly backdrop of Rome — the Spanish Steps turned into an open-air catwalk.",
+      "Selected for the VIII Edition of Fashion & Talents, the event that moves between Rome and the Milan fashion week calendar.",
+    ],
+    materials: [
+      "Crisp cotton shirting",
+      "Glossed red nappa",
+      "Fringe-leather clutch",
+      "White leather sneakers",
+    ],
+    location: "Piazza di Spagna, Roma",
+    coordinates: { lat: "41.9058° N", lng: "12.4824° E" },
+    accent: "#ff2d22",
+    cover: "/assets/projects/fashion-talents/01.jpg",
+    gallery: [
+      { src: "/assets/projects/fashion-talents/01.jpg", alt: "Fashion & Talents — the look on the runway, white shirt and red nappa trousers", span: "tall" },
+      { src: "/assets/projects/fashion-talents/02.jpg", alt: "Fashion & Talents — open-air runway at Piazza di Spagna", span: "wide" },
+      { src: "/assets/projects/fashion-talents/03.jpg", alt: "Fashion & Talents — walking the look with fringe clutch", span: "tall" },
+      { src: "/assets/projects/fashion-talents/04.jpg", alt: "Fashion & Talents — official poster, VIII Edition", span: "square" },
+      { src: "/assets/projects/fashion-talents/05.jpg", alt: "Fashion & Talents — designers' bow at the end of the show", span: "wide" },
+    ],
+  },
+  {
+    slug: "chowa-armonia",
+    index: "05",
+    title: "Chowa: Armonia",
+    subtitle: "Accademia del Lusso × Giuliano Fujiwara",
+    year: "2026",
+    teaser:
+      "The harmony of imperfection — three looks between sashiko memory and deconstruction, on the occasion of Milano Fashion Week SS.2027.",
+    rationale: [
+      "Chowa — harmony. A special project dedicated to Giuliano Fujiwara, reinterpreting the brand's identity and creative heritage through the students' contemporary perspective.",
+      "The whole creative process unfolds from garment design to styling and image development, balancing archive research with experimentation.",
+      "Three looks — Sashiko De-Construction, Equilibrium, Memory Gesture — move between hand-stitched memory, suspended balance and the gesture of dressing.",
+    ],
+    materials: [
+      "Red running-stitch sashiko",
+      "Raw-edge deconstruction",
+      "Knotted drawstring details",
+      "Industrial cotton canvas",
+    ],
+    location: "Accademia del Lusso, Milano",
+    coordinates: { lat: "45.4720° N", lng: "9.1859° E" },
+    accent: "#c1121f",
+    cover: "/assets/projects/chowa-armonia/03.jpg",
+    gallery: [
+      { src: "/assets/projects/chowa-armonia/03.jpg", alt: "Chowa: Armonia — Sashiko De-Construction, white tailoring with red running stitches", span: "tall" },
+      { src: "/assets/projects/chowa-armonia/01.jpg", alt: "Chowa: Armonia — Look 01 against the studio wall", span: "square" },
+      { src: "/assets/projects/chowa-armonia/06.jpg", alt: "Chowa: Armonia — Equilibrium, profile with ribbon ear-piece", span: "tall" },
+      { src: "/assets/projects/chowa-armonia/09.jpg", alt: "Chowa: Armonia — Equilibrium on the runway", span: "tall" },
+      { src: "/assets/projects/chowa-armonia/14.jpg", alt: "Chowa: Armonia — Memory Gesture, knotted tunic backstage", span: "tall" },
+      { src: "/assets/projects/chowa-armonia/16.jpg", alt: "Chowa: Armonia — the industrial hall set for the show", span: "tall" },
     ],
   },
 ];

@@ -34,6 +34,9 @@ const config: Config = {
         // Per-project accents
         cage: "#d9d9d9",
         cuff: "#7a5cff", // purple/satin for ear cuff
+        scarlet: "#ff2d22", // fashion & talents runway glow
+        thread: "#c1121f", // chowa sashiko thread red
+        paper: "#ebe8e0", // chowa lookbook board — raw paper
       },
       fontFamily: {
         // Mapped to next/font CSS variables (see lib/fonts.ts)

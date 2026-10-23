@@ -2,18 +2,25 @@ import type { Metadata } from "next";
 import { getProject, projects, type ProjectSlug } from "@/lib/projects";
 
 /** Canonical site URL — set NEXT_PUBLIC_SITE_URL in production (e.g. Vercel). */
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "https://andreazucca.eu";
+function normalizeSiteUrl(url: string): string {
+  return url
+    .replace(/\/$/, "")
+    .replace(/^https:\/\/andreazucca\.com(?=\/|$)/, "https://www.andreazucca.eu")
+    .replace(/^https:\/\/andreazucca\.eu(?=\/|$)/, "https://www.andreazucca.eu");
+}
+
+export const SITE_URL = normalizeSiteUrl(
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.andreazucca.eu",
+);
 
 export const SITE = {
   name: "Andrea Zucca",
   title: "Andrea Zucca — Fashion Designer Portfolio",
   tagline: "Fashion designer · Milano",
   description:
-    "Official portfolio of Andrea Zucca, Milan-based fashion designer. Explore Senza Limiti, Anatomia della Gabbia, Ear Cuff and editorial work in garment construction, styling and visual research.",
+    "Official portfolio of Andrea Zucca, Milan-based fashion designer. Explore Senza Limiti, Anatomia della Gabbia, Ear Cuff, Fashion & Talents with Giuliano Fujiwara and Chowa: Armonia — runway work in garment construction, styling and visual research.",
   descriptionIt:
-    "Portfolio ufficiale di Andrea Zucca, fashion designer di Milano. Collezioni, styling editoriale e ricerca visiva tra identità, struttura e tensione.",
+    "Portfolio ufficiale di Andrea Zucca, fashion designer di Milano. Collezioni, styling editoriale e ricerca visiva tra identità, struttura e tensione — da Senza Limiti a Chowa: Armonia.",
   locale: "en_GB",
   localeAlternate: "it_IT",
   email: "Zuccaandrea1999@outlook.it",
@@ -38,6 +45,12 @@ export const SEO_KEYWORDS = [
   "Senza Limiti",
   "Anatomia della Gabbia",
   "Ear Cuff",
+  "Fashion & Talents",
+  "Chowa Armonia",
+  "Giuliano Fujiwara",
+  "Milano Fashion Week",
+  "sashiko deconstruction",
+  "runway styling",
   "fashion product design",
   "editorial styling",
   "avant-garde fashion",
@@ -204,6 +217,9 @@ export function personJsonLd() {
       "Editorial Styling",
       "Fashion Product Design",
       "Visual Research",
+      "Runway Design",
+      "Sashiko Techniques",
+      "Brand Collaboration",
     ],
     workLocation: {
       "@type": "Place",
