@@ -183,8 +183,8 @@ export const projects: Project[] = [
       "Knotted drawstring details",
       "Industrial cotton canvas",
     ],
-    location: "Accademia del Lusso, Milano",
-    coordinates: { lat: "45.4720° N", lng: "9.1859° E" },
+    location: "Eleven Factory, Via Padova 11, Milano",
+    coordinates: { lat: "45.4938° N", lng: "9.2156° E" },
     accent: "#c1121f",
     cover: "/assets/projects/chowa-armonia/03.jpg",
     gallery: [

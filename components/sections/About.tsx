@@ -50,10 +50,14 @@ export default function About() {
           </span>
 
           <div className="space-y-6 font-serif text-2xl leading-snug text-silver-bright md:text-[2.1rem]">
-            <RevealText text="Andrea Zucca builds garments the way one builds a structure — through tension, exposure and restraint." />
+            <RevealText text="Andrea Zucca explores fashion through identity, structure and tension — originally trained in hairstyling, he turned to the body itself as his material." />
             <RevealText
-              text="His work reinterprets the body as architecture: skeletons turned inside out, cages that protect and confine, craft traditions melted into brutalist objects."
+              text="He studied Fashion Product Design at Accademia del Lusso in Milan, developing a practice rooted in garment construction, digital experimentation and visual research."
               delay={0.1}
+            />
+            <RevealText
+              text="His work has walked the runway from Rome to Milan Fashion Week — a Brand Project with Giuliano Fujiwara at Fashion & Talents, and Chowa: Armonia, the harmony of imperfection."
+              delay={0.2}
             />
           </div>
 
@@ -66,9 +70,21 @@ export default function About() {
             </div>
             <div>
               <span className="mb-1 block font-mono text-[10px] uppercase tracking-brutal text-silver-dim">
+                Training
+              </span>
+              Fashion Product Design — Accademia del Lusso, Milano.
+            </div>
+            <div>
+              <span className="mb-1 block font-mono text-[10px] uppercase tracking-brutal text-silver-dim">
                 Based in
               </span>
               Milano — working internationally.
+            </div>
+            <div>
+              <span className="mb-1 block font-mono text-[10px] uppercase tracking-brutal text-silver-dim">
+                Latest
+              </span>
+              Chowa: Armonia — Milano Fashion Week SS.2027.
             </div>
           </div>
         </div>

@@ -345,7 +345,7 @@ export default function ChowaArmonia() {
       {/* ===================== LOOK 02 — equilibrium on ink ===================== */}
       <section className="relative border-t border-white/10 py-24 md:py-36">
         <div className="mx-auto max-w-[1600px] px-5 md:px-10">
-          <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
+          <div className="mb-12 flex flex-wrap items-start justify-between gap-4">
             <div>
               <span className="mb-2 block font-mono text-[11px] uppercase tracking-brutal text-silver-dim">
                 Look {LOOKS[1].n} / 03
@@ -354,7 +354,7 @@ export default function ChowaArmonia() {
                 {LOOKS[1].name}
               </h2>
             </div>
-            <div className="max-w-sm">
+            <div className="max-w-sm md:mt-7">
               <p className="font-sans text-sm leading-relaxed text-silver-dim md:text-base">
                 {LOOKS[1].note}
               </p>
@@ -371,16 +371,29 @@ export default function ChowaArmonia() {
           />
 
           <div className="mt-5 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
-            {["07", "09", "10", "11", "12", "13"].map((n, i) => (
+            {[
+              { n: "07", tag: "runway" },
+              { n: "10", tag: "runway" },
+              { n: "11", tag: "runway" },
+              { n: "12", tag: "runway" },
+              { n: "21", tag: "backstage" },
+              { n: "22", tag: "interview" },
+            ].map(({ n, tag }, i) => (
               <div key={n} className="group">
                 <RevealImage
                   src={`/assets/projects/chowa-armonia/${n}.jpg`}
-                  alt={`Chowa: Armonia — Look 02, Equilibrium runway study ${i + 1}`}
+                  alt={
+                    tag === "backstage"
+                      ? "Chowa: Armonia — Look 02, Equilibrium backstage fitting"
+                      : tag === "interview"
+                      ? "Chowa: Armonia — press interview at the event, Accademia del Lusso × Giuliano Fujiwara"
+                      : `Chowa: Armonia — Look 02, Equilibrium runway study ${i + 1}`
+                  }
                   className="aspect-[3/4] w-full border border-white/10"
                   imgClassName="transition-transform duration-[1.3s] ease-out group-hover:scale-105"
                 />
                 <span className="mt-2 block font-mono text-[10px] uppercase tracking-brutal text-silver-dim">
-                  02.{n} — <span className="text-thread">runway</span>
+                  02.{n} — <span className="text-thread">{tag}</span>
                 </span>
               </div>
             ))}
