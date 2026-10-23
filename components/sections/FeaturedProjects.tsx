@@ -119,6 +119,8 @@ export default function FeaturedProjects() {
                           ? "/assets/projects/senza-limiti/03.jpg"
                           : p.slug === "anatomia-della-gabbia"
                           ? "/assets/projects/anatomia-della-gabbia/09.jpg"
+                          : p.slug === "chowa-armonia"
+                          ? "/assets/projects/chowa-armonia/10.jpg"
                           : p.cover
                       }
                       alt={p.title}

@@ -153,10 +153,10 @@ export default function Hero() {
             className="display-tight font-display text-[18vw] uppercase leading-[0.82] text-metal md:text-[15vw] lg:text-[13vw]"
           >
             <span className="block">
-              <MaskedWord text="Andrea" />
+              <MaskedWord text="About" />
             </span>
             <span className="block text-blood">
-              <MaskedWord text="Zucca" />
+              <MaskedWord text="Me" />
             </span>
           </motion.h1>
           <p className="sr-only">

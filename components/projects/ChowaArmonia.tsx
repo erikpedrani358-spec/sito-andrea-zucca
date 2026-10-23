@@ -471,6 +471,14 @@ export default function ChowaArmonia() {
             <span className="mt-3 block font-mono text-[10px] uppercase tracking-brutal text-silver-dim">
               Official placard — {project.subtitle}
             </span>
+            <RevealImage
+              src="/assets/projects/chowa-armonia/24.jpg"
+              alt="Chowa: Armonia — official show poster, 25 September 2026, Eleven Factory Milano"
+              className="mt-8 aspect-[1024/535] w-full border border-white/15"
+            />
+            <span className="mt-3 block font-mono text-[10px] uppercase tracking-brutal text-silver-dim">
+              Official poster — <span className="text-thread">25.09.2026 · Eleven Factory</span>
+            </span>
           </div>
           <div className="flex flex-col justify-center md:col-span-7">
             <div className="mb-8 flex items-center gap-4">

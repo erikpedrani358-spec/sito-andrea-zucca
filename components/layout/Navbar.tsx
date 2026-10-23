@@ -8,7 +8,6 @@ import { projects } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
 

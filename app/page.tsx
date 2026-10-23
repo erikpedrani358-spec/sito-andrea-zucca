@@ -19,9 +19,6 @@ const ContactSection = dynamic(
   () => import("@/components/sections/ContactSection"),
   { loading: () => <div className="min-h-[20vh] bg-ink" aria-hidden /> }
 );
-const About = dynamic(() => import("@/components/sections/About"), {
-  loading: () => <div className="min-h-[40vh] bg-ink" aria-hidden />,
-});
 
 export const metadata: Metadata = homeMetadata();
 
@@ -39,7 +36,6 @@ export default function Home() {
       <main>
         <Hero />
         <FeaturedProjects />
-        <About />
         <ContactSection />
         <Footer />
       </main>

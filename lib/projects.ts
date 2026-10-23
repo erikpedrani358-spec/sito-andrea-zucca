@@ -102,6 +102,7 @@ export const projects: Project[] = [
       { src: "/assets/projects/anatomia-della-gabbia/08.jpg", alt: "Anatomia della Gabbia — atelier", span: "tall" },
       { src: "/assets/projects/anatomia-della-gabbia/09.jpg", alt: "Anatomia della Gabbia — detail", span: "square" },
       { src: "/assets/projects/anatomia-della-gabbia/10.jpg", alt: "Anatomia della Gabbia — final look", span: "wide" },
+      { src: "/assets/projects/anatomia-della-gabbia/11.jpg", alt: "Anatomia della Gabbia — ink and watercolor study of the caged silhouette", span: "tall" },
     ],
   },
   {
